@@ -13,7 +13,8 @@ add_executable(solution
         parser/parser.cpp
         data/data.cpp
         data/exceptions.cpp
-        executor/executor.cpp)
+        executor/executor.cpp
+        main.cpp)
 
 add_executable(tests
         parser/converter.cpp
