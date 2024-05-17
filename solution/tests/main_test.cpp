@@ -16,7 +16,7 @@ TEST_CASE("check parser") {
 }
 
 TEST_CASE("check parser") {
-    std::vector<int> good_tests = {0, 1, 6, 7};
+    std::vector<int> good_tests = {0, 1, 6, 7, 8};
     for (auto &test_number: good_tests) {
         Parser parser("tests/input/0" + std::to_string(test_number) + ".in");
         Data data = parser.parse();

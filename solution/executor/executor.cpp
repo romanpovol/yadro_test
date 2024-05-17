@@ -44,12 +44,10 @@ void Executor::run() {
         }
     }
 
-
     for (auto const &[client_name, status]: clients) {
-        if (status == 2) {
-            client_left(client_name, data.end_time);
-        }
+        client_left(client_name, data.end_time);
     }
+
     ostream << Converter::convert_time_in_minutes_to_string(data.end_time) << '\n';
     for (std::size_t i = 1; i < tables_info.size(); i++) {
         int revenue = tables_info[i].revenue;
@@ -149,7 +147,6 @@ void Executor::client_from_queue_sat(int time, int table_number) {
     table_number_by_client[client_from_queue] = table_number;
     tables[table_number] = client_from_queue;
     clients[client_from_queue] = 2;
-
 }
 
 void Executor::client_left(const std::string &client_name, int time) {

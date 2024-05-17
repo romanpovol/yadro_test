@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 struct ErrorInInputFileException : std::runtime_error {
-    explicit ErrorInInputFileException(int line_number_with_error);
+    explicit ErrorInInputFileException(const std::string& string_with_error);
 };
 
 

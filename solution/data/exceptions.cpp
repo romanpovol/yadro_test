@@ -1,4 +1,4 @@
 #include "exceptions.h"
 
-ErrorInInputFileException::ErrorInInputFileException(int line_number_with_error_) :
-        std::runtime_error("Error in input file in line: " + std::to_string(line_number_with_error_)) {}
+ErrorInInputFileException::ErrorInInputFileException(const std::string& string_with_error) :
+        std::runtime_error(string_with_error) {}

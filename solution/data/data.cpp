@@ -2,7 +2,7 @@
 
 Event::Event(int time_,
              int id_,
-             const std::string &client_name_) : time(time_), id(id_), client_name(client_name_), table_number() {}
+             const std::string &client_name_) : time(time_), id(id_), client_name(client_name_) {}
 
 Event::Event(int time_,
              int id_,

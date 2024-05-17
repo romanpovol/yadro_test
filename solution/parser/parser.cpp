@@ -22,16 +22,16 @@ Data Parser::parse() {
 
 int Parser::parse_number_of_tables() {
     int line_number = 1;
-    Validator validator(line_number);
     std::string input_line;
     if (std::getline(input_file, input_line)) {
+        Validator validator(input_line);
         std::stringstream sstream(input_line);
         int number_of_tables = 0;
         if (sstream >> number_of_tables && number_of_tables > 0) {
             validator.check_line_is_over(sstream);
             return number_of_tables;
         } else {
-            throw ErrorInInputFileException(line_number);
+            throw ErrorInInputFileException(input_line);
         }
     } else {
         throw std::runtime_error("Unable to read " + std::to_string(line_number) +
@@ -41,9 +41,9 @@ int Parser::parse_number_of_tables() {
 
 std::pair<int, int> Parser::parse_time() {
     int line_number = 2;
-    Validator validator(line_number);
     std::string input_line;
     if (std::getline(input_file, input_line)) {
+        Validator validator(input_line);
         std::stringstream sstream(input_line);
         std::pair<int, int> time;
         std::string start;
@@ -56,7 +56,7 @@ std::pair<int, int> Parser::parse_time() {
                     Converter::convert_time_in_string_to_minutes(end)};
             return time;
         } else {
-            throw ErrorInInputFileException(line_number);
+            throw ErrorInInputFileException(input_line);
         }
     } else {
         throw std::runtime_error("Unable to read " + std::to_string(line_number) +
@@ -66,16 +66,16 @@ std::pair<int, int> Parser::parse_time() {
 
 int Parser::parse_price_per_hour() {
     int line_number = 3;
-    Validator validator(line_number);
     std::string input_line;
     if (std::getline(input_file, input_line)) {
+        Validator validator(input_line);
         std::stringstream sstream(input_line);
         int price_per_hour = 0;
         if (sstream >> price_per_hour && price_per_hour > 0) {
             validator.check_line_is_over(sstream);
             return price_per_hour;
         } else {
-            throw ErrorInInputFileException(line_number);
+            throw ErrorInInputFileException(input_line);
         }
     } else {
         throw std::runtime_error("Unable to read " + std::to_string(line_number) +
@@ -85,10 +85,10 @@ int Parser::parse_price_per_hour() {
 
 std::vector<Event> Parser::parse_events(int number_of_tables) {
     int line_number = 4;
-    Validator validator(line_number);
     std::string input_line;
     std::vector<Event> events;
     while (std::getline(input_file, input_line)) {
+        Validator validator(input_line);
         std::stringstream sstream(input_line);
         std::string time;
         int id = 0;
@@ -101,7 +101,7 @@ std::vector<Event> Parser::parse_events(int number_of_tables) {
                     validator.check_table_number_is_correct(table_number,
                                                             number_of_tables);
                 } else {
-                    throw ErrorInInputFileException(line_number);
+                    throw ErrorInInputFileException(input_line);
                 }
             }
 
@@ -123,7 +123,7 @@ std::vector<Event> Parser::parse_events(int number_of_tables) {
 
             line_number++;
         } else {
-            throw ErrorInInputFileException(line_number);
+            throw ErrorInInputFileException(input_line);
         }
     }
     return events;

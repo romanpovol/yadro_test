@@ -6,11 +6,11 @@
 
 struct Validator {
 private:
-    int& line_number;
+    std::string line;
 
 public:
 
-    explicit Validator(int& line_number_);
+    explicit Validator(const std::string& line);
 
     void check_line_is_over(std::stringstream &sstreamer) const; // checks that the line has ended
 
